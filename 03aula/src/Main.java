@@ -141,3 +141,44 @@ import javax.swing.*;
 //    }
 //}
 ////https://www.w3schools.com/java/java_arraylist.asp
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Quantos salários serão digitados? ");
+        int n = scanner.nextInt();
+
+        double[] salarios = new double[n];
+        double totalAntigo = 0;
+        double totalCorrigido = 0;
+        double maiorSalario = Double.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Digite o salário " + (i + 1) + ": ");
+            salarios[i] = scanner.nextDouble();
+            totalAntigo += salarios[i];
+
+            if (salarios[i] > maiorSalario) {
+                maiorSalario = salarios[i];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (salarios[i] < 2500) {
+                salarios[i] *= 1.1;
+            }
+            totalCorrigido += salarios[i];
+        }
+
+        System.out.println("O maior salário é: R$" + maiorSalario);
+
+        System.out.println("Total da folha de pagamento antiga: R$" + totalAntigo);
+
+        System.out.println("Total da folha de pagamento corrigida: R$" + totalCorrigido);
+
+        scanner.close();
+    }
+}
